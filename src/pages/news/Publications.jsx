@@ -5,9 +5,11 @@ import { useGetLatestPublicationByDeptIdQuery } from "@/redux/api/newsApi";
 import { useTranslation } from "react-i18next";
 import message from "@/assets/hero/message.webp";
 import PublicationCard from "@/components/news/PublicationCard";
+import { useGetBannerImagesQuery } from "@/redux/api/bannerApi";
 
 const Publications = () => {
   const { data } = useGetLatestPublicationByDeptIdQuery();
+  const { data:banner, isLoading } = useGetBannerImagesQuery();
   const { t } = useTranslation();
   console.log("Publication Data:", data);
   return <>
@@ -19,7 +21,7 @@ const Publications = () => {
         ogImage={data?.data?.seo?.ogImage}
         keywords={data?.data?.seo?.metaKeywords}
       />
-      <Hero src={message} heading={"LATEST PUBLICATIONS"} />
+      <Hero src={`${import.meta.env.VITE_API_BASE_URL}/${banner?.data?.publication?.image}`} heading={"LATEST PUBLICATIONS"} />
       <MaxContainer className="px-5 py-10 md:gap-8 md:py-16">
         <div className="flex flex-wrap justify-center gap-5 py-10 md:gap-8">
           {data?.data?.map((d) => (
