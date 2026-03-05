@@ -64,7 +64,7 @@ export default function HeroSection() {
       )}
 
       <div
-        className="absolute top-[38rem] z-40 mx-auto flex w-full max-w-[1790px] px-3 md:px-10"
+        className="absolute top-[40rem] z-40 mx-auto flex w-full max-w-[1790px] px-3 md:px-10"
         id="learnmore"
       >
         <HomeStatistics />
